@@ -1,7 +1,6 @@
 <?php
 // connection database
-require_once 'conn.php';
-
+require_once '../../database.php';
 
 $search = $_GET['search'] ?? '';
 if ($search) {
@@ -25,19 +24,7 @@ $products = $state->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="app.css">
-    <title>Product CRUD</title>
-</head>
+<?php include_once '../../views/partials/header.php'; ?>
 
 <body>
     <h1>Product CRUD</h1>
@@ -69,7 +56,7 @@ $products = $state->fetchAll(PDO::FETCH_ASSOC);
                     <th scope="row"><?php echo $key + 1  ?></th>
                     <td><?php echo $value['title'] ?></td>
                     <td><?php echo $value['disc'] ?></td>
-                    <td> <img src="<?php echo $value['image'] ?>" style="width: 60px;" alt=" <?php echo $value['title'] ?>"></img></td>
+                    <td> <img src="/<?php echo $value['image'] ?>" style="width: 60px;" alt=" <?php echo $value['title'] ?>"></img></td>
                     <td><?php echo '$' . $value['price'] ?></td>
                     <td><?php echo $value['create_date'] ?></td>
                     <td>
@@ -86,8 +73,4 @@ $products = $state->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <?php include_once '../../views/partials/footer.php'; ?>
